@@ -18,6 +18,7 @@ import java.util.UUID;
 
 import static com.potatoshreds.ponpo.Config.specOpsUtilityBeltRestriction;
 import static com.potatoshreds.ponpo.Config.specOpsUtilityBeltSlots;
+import static com.potatoshreds.ponpo.Config.specOpsUtilityBeltStorage;
 
 public class SpecOpsUtilityBeltCurio extends Item{
     public SpecOpsUtilityBeltCurio() {
@@ -38,9 +39,11 @@ public class SpecOpsUtilityBeltCurio extends Item{
             public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext sc, UUID uuid){
                 Multimap<Attribute, AttributeModifier> atts = HashMultimap.create();
 
-                Attribute hslots = ModAttributes.HOTBAR_SLOTS.get();
+                Attribute slots = ModAttributes.SLOTS.get();
+				Attribute hslots = ModAttributes.HOTBAR_SLOTS.get();
 
-                CuriosApi.addModifier(stack,hslots,"hotbarslotsSPBelt",null,specOpsUtilityBeltSlots, AttributeModifier.Operation.ADDITION,"belt");
+                CuriosApi.addModifier(stack,slots,"inventoryslotsSPBelt",null,specOpsUtilityBeltStorage, AttributeModifier.Operation.ADDITION,"belt");
+				CuriosApi.addModifier(stack,hslots,"hotbarslotsSPBelt",null,specOpsUtilityBeltSlots, AttributeModifier.Operation.ADDITION,"belt");
 
                 CuriosApi.addSlotModifier(stack, "belt", "SPslotsSpec", null, specOpsUtilityBeltRestriction, AttributeModifier.Operation.ADDITION, "belt");
 

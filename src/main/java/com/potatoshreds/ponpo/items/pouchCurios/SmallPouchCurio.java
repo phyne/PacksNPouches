@@ -17,6 +17,7 @@ import top.theillusivec4.curios.common.capability.CurioItemCapability;
 import java.util.UUID;
 
 import static com.potatoshreds.ponpo.Config.smallPouchSlots;
+import static com.potatoshreds.ponpo.Config.smallPouchStorage;
 
 public class SmallPouchCurio extends Item{
     public SmallPouchCurio() {
@@ -37,9 +38,11 @@ public class SmallPouchCurio extends Item{
             public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext sc, UUID uuid){
                 Multimap<Attribute, AttributeModifier> atts = HashMultimap.create();
 
+				Attribute slots = ModAttributes.SLOTS.get();
                 Attribute hslots = ModAttributes.HOTBAR_SLOTS.get();
 
-                CuriosApi.addModifier(stack, hslots,"hotbarslotsSmallPouch",null,smallPouchSlots, AttributeModifier.Operation.ADDITION,"belt");
+                CuriosApi.addModifier(stack, slots, "inventoryslotsSmallPouch", null, smallPouchStorage, AttributeModifier.Operation.ADDITION,"belt");
+				CuriosApi.addModifier(stack, hslots, "hotbarslotsSmallPouch", null, smallPouchSlots, AttributeModifier.Operation.ADDITION,"belt");
 
                 return atts;
             }

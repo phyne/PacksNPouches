@@ -20,6 +20,7 @@ import top.theillusivec4.curios.common.capability.CurioItemCapability;
 import java.util.UUID;
 
 import static com.potatoshreds.ponpo.Config.catPouchSlots;
+import static com.potatoshreds.ponpo.Config.catPouchStorage;
 
 public class CatPouchCurio extends Item{
     public CatPouchCurio() {
@@ -44,10 +45,11 @@ public class CatPouchCurio extends Item{
             public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext sc, UUID uuid){
                 Multimap<Attribute, AttributeModifier> atts = HashMultimap.create();
 
-                Attribute hslots = ModAttributes.HOTBAR_SLOTS.get();
+                Attribute slots = ModAttributes.SLOTS.get();
+				Attribute hslots = ModAttributes.HOTBAR_SLOTS.get();
 
-
-                CuriosApi.addModifier(stack, hslots,"hotbarslotsCatPouch", null, catPouchSlots, AttributeModifier.Operation.ADDITION,"belt");
+                CuriosApi.addModifier(stack, slots, "inventoryslotsCatPouch", null, catPouchStorage, AttributeModifier.Operation.ADDITION,"belt");
+				CuriosApi.addModifier(stack, hslots, "hotbarslotsCatPouch", null, catPouchSlots, AttributeModifier.Operation.ADDITION,"belt");
 
                 return atts;
             }

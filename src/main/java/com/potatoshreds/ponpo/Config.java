@@ -71,28 +71,43 @@ public class Config
         .defineInRange("militaryBagStorage", 27, 0, Integer.MAX_VALUE);
 
 
-    private static final ForgeConfigSpec.IntValue LARGEPOUCH_SLOTS = BUILDER
-        .comment("How many additional hotbar slots the large belt gives(INTEGERS ONLY)")
+    private static final ForgeConfigSpec.IntValue LARGEPOUCH_STORAGE = BUILDER
+        .comment("How much additional storage the large pouch gives(INTEGERS ONLY)")
+        .defineInRange("largePouchSlots", 0, 0, Integer.MAX_VALUE);
+	private static final ForgeConfigSpec.IntValue LARGEPOUCH_SLOTS = BUILDER
+        .comment("How many additional hotbar slots the large pouch gives(INTEGERS ONLY)")
         .defineInRange("largePouchSlots", 2, 0, Integer.MAX_VALUE);
-    private static final ForgeConfigSpec.IntValue SMALLPOUCH_SLOTS = BUILDER
+    private static final ForgeConfigSpec.IntValue SMALLPOUCH_STORAGE = BUILDER
+        .comment("How much addition storage the small pouch gives(INTEGERS ONLY)")
+        .defineInRange("smallPouchStorage", 0, 0, Integer.MAX_VALUE);
+	private static final ForgeConfigSpec.IntValue SMALLPOUCH_SLOTS = BUILDER
         .comment("How many additional hotbar slots the small pouch gives(INTEGERS ONLY)")
         .defineInRange("smallPouchSlots", 1, 0, Integer.MAX_VALUE);
-    private static final ForgeConfigSpec.IntValue TOOLBELT_SLOTS = BUILDER
+	private static final ForgeConfigSpec.IntValue TOOLBELT_STORAGE = BUILDER
+        .comment("How much addition storage the toolbelt gives(INTEGERS ONLY)")
+        .defineInRange("toolBeltStorage", 0, 0, Integer.MAX_VALUE);
+	private static final ForgeConfigSpec.IntValue TOOLBELT_SLOTS = BUILDER
         .comment("How many additional hotbar slots the toolbelt gives(INTEGERS ONLY)")
         .defineInRange("toolBeltSlots", 4, 0, Integer.MAX_VALUE);
     private static final ForgeConfigSpec.IntValue TOOLBELT_RESTRICTION = BUILDER
         .comment("How many belt slots the toolbelt adds/removes.(INTEGERS ONLY)" +
             "\n Note that this value should essentially always be negative or 0, as otherwise you will be able to equip infinite belts.")
             .defineInRange("toolBeltRestriction", -1, -2, Integer.MAX_VALUE);
-    private static final ForgeConfigSpec.IntValue SPECOPSUTILITYBELT_SLOTS = BUILDER
+    private static final ForgeConfigSpec.IntValue SPECOPSUTILITYBELT_STORAGE = BUILDER
+        .comment("How much addition storage the specops belt gives(INTEGERS ONLY)")
+        .defineInRange("specOpsUtilityBeltStorage", 0, 0, Integer.MAX_VALUE);
+	private static final ForgeConfigSpec.IntValue SPECOPSUTILITYBELT_SLOTS = BUILDER
         .comment("How many additional hotbar slots the specops belt gives(INTEGERS ONLY)")
         .defineInRange("specOpsUtilityBeltSlots", 5, 0, Integer.MAX_VALUE);
     private static final ForgeConfigSpec.IntValue SPECOPSUTILITYBELT_RESTRICTION = BUILDER
         .comment("How many belt slots the specops belt adds/removes.(INTEGERS ONLY)" +
             "\n Note that this value should essentially always be negative or 0, as otherwise you will be able to equip infinite belts.")
             .defineInRange("specOpsUtilityBeltRestriction", -1, -2, Integer.MAX_VALUE);
-    private static final ForgeConfigSpec.IntValue CATPOUCH_SLOTS = BUILDER
-        .comment("How many additional hotbar slots the cat pouch belt adds/removes.(INTEGERS ONLY)")
+    private static final ForgeConfigSpec.IntValue CATPOUCH_STORAGE = BUILDER
+        .comment("How much additional storage the cat pouch gives(INTEGERS ONLY)")
+        .defineInRange("catPouchStorage", 0, 0, Integer.MAX_VALUE);
+	private static final ForgeConfigSpec.IntValue CATPOUCH_SLOTS = BUILDER
+        .comment("How many additional hotbar slots the cat pouch gives(INTEGERS ONLY)")
         .defineInRange("catPouchSlots", 3, 0, Integer.MAX_VALUE);
 
 
@@ -120,14 +135,19 @@ public class Config
     public static int leatherBagStorage;
     public static int militaryBagStorage;
 
-    //slots and belt restrictions for pouches
-    public static int largePouchSlots;
-    public static int smallPouchSlots;
+    //slots, storage variables, and belt restrictions for pouches
+    public static int largePouchStorage;
+	public static int largePouchSlots;
+    public static int smallPouchStorage;
+	public static int smallPouchSlots;
+	public static int toolBeltStorage;
     public static int toolBeltSlots;
     public static int toolBeltRestriction;
+	public static int specOpsUtilityBeltStorage;
     public static int specOpsUtilityBeltSlots;
     public static int specOpsUtilityBeltRestriction;
-    public static int catPouchSlots;
+    public static int catPouchStorage;
+	public static int catPouchSlots;
 
     private static boolean validateItemName(final Object obj)
     {
@@ -157,12 +177,17 @@ public class Config
         leatherBagStorage = LEATHERBAG_STORAGE.get();
         militaryBagStorage = MILITARYBAG_STORAGE.get();
 
-        largePouchSlots = LARGEPOUCH_SLOTS.get();
+        largePouchStorage = LARGEPOUCH_STORAGE.get();
+		largePouchSlots = LARGEPOUCH_SLOTS.get();
+		smallPouchStorage = SMALLPOUCH_STORAGE.get();
         smallPouchSlots = SMALLPOUCH_SLOTS.get();
-        toolBeltSlots = TOOLBELT_SLOTS.get();
+        toolBeltStorage = TOOLBELT_STORAGE.get();
+		toolBeltSlots = TOOLBELT_SLOTS.get();
         toolBeltRestriction = TOOLBELT_RESTRICTION.get();
+		specOpsUtilityBeltStorage = SPECOPSUTILITYBELT_STORAGE.get();
         specOpsUtilityBeltSlots = SPECOPSUTILITYBELT_SLOTS.get();
         specOpsUtilityBeltRestriction = SPECOPSUTILITYBELT_RESTRICTION.get();
-        catPouchSlots = CATPOUCH_SLOTS.get();
+        catPouchStorage = CATPOUCH_STORAGE.get();
+		catPouchSlots = CATPOUCH_SLOTS.get();
     }
 }
