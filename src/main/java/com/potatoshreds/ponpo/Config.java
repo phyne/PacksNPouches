@@ -73,7 +73,7 @@ public class Config
 
     private static final ForgeConfigSpec.IntValue LARGEPOUCH_STORAGE = BUILDER
         .comment("How much additional storage the large pouch gives(INTEGERS ONLY)")
-        .defineInRange("largePouchSlots", 0, 0, Integer.MAX_VALUE);
+        .defineInRange("largePouchStorage", 0, 0, Integer.MAX_VALUE);
 	private static final ForgeConfigSpec.IntValue LARGEPOUCH_SLOTS = BUILDER
         .comment("How many additional hotbar slots the large pouch gives(INTEGERS ONLY)")
         .defineInRange("largePouchSlots", 2, 0, Integer.MAX_VALUE);
